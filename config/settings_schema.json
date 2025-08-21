@@ -1,0 +1,20 @@
+[
+    {
+        "name" : "theme_info",
+        "theme_name": "Built from scratch",
+        "theme_author": "Rizki Januar I.",
+        "theme_version": "1.0.0",
+        "theme_documentation_url": "https://github.com/rizkijanuar",
+        "theme_support_url": "https://github.com/rizkijanuar"
+    },
+    {
+        "name": "Theme settings",
+        "settings": [
+            {
+                "type": "text",
+                "id": "brand_tagline",
+                "label": "Brand tagline"
+            }
+        ]
+    }
+]
