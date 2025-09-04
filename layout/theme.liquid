@@ -1,9 +1,12 @@
 <html>
     <head>
+        <title>{{ pages_title }}</title>
         {{content_for_header}}
+        <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}" type="text/css" media="all">
     </head>
 
     <body>
+        {% sections 'header-group' %}
         {{content_for_layout}}
     </body>
 </html>

@@ -1,0 +1,292 @@
+{% schema %}
+{
+  "name": "Hero Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Heading",
+      "default": "Welcome to Our Store"
+    },
+    {
+      "type": "text",
+      "id": "hero_subheading",
+      "label": "Subheading",
+      "default": "Discover the latest trends and exclusive offers"
+    },
+    {
+      "type": "url",
+      "id": "hero_button_link",
+      "label": "Button Link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "hero_button_text",
+      "label": "Button Text",
+      "default": "Shop Now!"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section",
+      "category": "General"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="hero-section">
+  <div
+    class="hero-card"
+    style="{% if section.settings.hero_image %}background-image: url({{ section.settings.hero_image | image_url: width:1800 }});{% endif %}"
+  >
+    <div class="hero-overlay"></div>
+    <div class="hero-content hero-content-blur">
+      <h1 class="hero-heading">{{ section.settings.hero_heading }}</h1>
+      <p class="hero-subheading">{{ section.settings.hero_subheading }}</p>
+      <a href="{{ section.settings.hero_button_link }}" class="hero-btn">
+        <span class="hero-btn-text">{{ section.settings.hero_button_text }}</span>
+        <svg
+          class="hero-btn-arrow"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background: transparent;
+    width: 100%;
+  }
+
+  .hero-card {
+    width: 100%;
+    max-width: none;
+    min-height: 480px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hero-card:hover {
+    {% comment %} transform: translateY(-4px);
+    box-shadow: 0 16px 60px rgba(0,0,0,0.15); {% endcomment %}
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    width: 100%;
+    min-height: 60%;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    animation: fadeInUp 0.8s ease-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-content-blur {
+    backdrop-filter: blur(0.1rem);
+    -webkit-backdrop-filter: blur(0.1rem);
+    background: rgba(255,255,255,0.6);
+    border-radius: 0;
+    border: none;
+  }
+
+  .hero-heading {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    color: #1a1a2e;
+    letter-spacing: -1.2px;
+    line-height: 1.1;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+  }
+
+  .hero-subheading {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    color: #4a5568;
+    line-height: 1.6;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+  }
+
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+  }
+
+  .hero-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .hero-btn:hover::before {
+    left: 100%;
+  }
+
+  .hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+  }
+
+  .hero-btn-text {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-btn-arrow {
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-btn:hover .hero-btn-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-section {
+      padding: 2rem 1rem;
+    }
+
+    .hero-card {
+      min-height: 300px;
+      max-width: 100%;
+      border-radius: 1.25rem;
+    }
+
+    .hero-content {
+      padding: 2rem 1.5rem;
+      max-width: 95vw;
+    }
+
+    .hero-heading {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subheading {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-btn {
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero-heading {
+      font-size: 1.8rem;
+    }
+
+    .hero-subheading {
+      font-size: 1rem;
+    }
+
+    .hero-btn {
+      padding: 0.8rem 1.8rem;
+    }
+  }
+
+  /* Reduced motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-card,
+    .hero-btn,
+    .hero-content,
+    .hero-heading,
+    .hero-subheading {
+      animation: none;
+      transition: none;
+    }
+
+    .hero-card:hover {
+      transform: none;
+    }
+
+    .hero-btn:hover {
+      transform: none;
+    }
+  }
+</style>

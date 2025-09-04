@@ -1,0 +1,24 @@
+{
+    "type": "header",
+    "name": "Header Group",
+    "sections": {
+        "header": {
+            "type": "header",
+            "name": "Header",
+            "settings": {}
+        },
+        "announcement_bar_d6VPww": {
+            "type": "announcement-bar",
+            "name": "Announcement Bar",
+            "settings": {
+                "background_color": "#000000",
+                "text_color": "#ffffff",
+                "announcement_text": "Welcome to our stylish store!"
+            }
+        }
+    },
+    "order": [
+        "header",
+        "announcement_bar_d6VPww"
+    ]
+}
